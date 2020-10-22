@@ -1,25 +1,27 @@
 class Size:
+    """ Representation of a binary size in octets (an octet is a byte 
+    with 8 bits).
 
-    """ Constructor """
+    Provides decimal and binary prefixes for multiples, from kilo-octets to
+    yotta-octets and from kibi-octets to yobi-octets.
 
-    def __init__(self, size_in_octets: int):
+    Supports comparisons, string representations and arithmetic operations."""
 
-        if not isinstance(size_in_octets, int):
-            raise TypeError("Size must be an integer")
+    def __init__(self, octets: int):
 
-        if size_in_octets < 0:
-            raise ValueError("Size must be positive")
+        if not isinstance(octets, int):
+            raise TypeError("'octets' argument must be an integer")
 
-        self._size_in_octets = size_in_octets
+        if octets < 0:
+            raise ValueError("'octets' argument must be positive")
+
+        self.octets = octets
 
     """ Properties """
 
     @property
-    def octets(self) -> int:
-        return self._size_in_octets
-
-    @property
     def o(self) -> int:
+        """ Just another way to access octets """
         return self.octets
 
     @property
@@ -158,5 +160,3 @@ class Size:
 
     def __pow__(self, power):
         return Size(self.octets ** power)
-
-    # TODO : descriptors
