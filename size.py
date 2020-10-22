@@ -144,7 +144,12 @@ class Size:
         return Size(self.octets + other.octets)
 
     def __sub__(self, other):
-        return Size(self.octets - other.octets)
+        difference = self.octets - other.octets
+        if difference < 0:
+            raise ValueError(
+                "Difference between Size objects cannot be negative")
+        else:
+            return Size(difference)
 
     def __div__(self, other):
         return self.octets / other.octets
