@@ -1,11 +1,39 @@
+class Multiple:
+    """
+    Binary multiples
+    """
+
+    kibi = 2**10
+    mebi = 2**20
+    gibi = 2**30
+    tebi = 2**40
+    pebi = 2**50
+    exbi = 2**60
+    zebi = 2**70
+    yobi = 2**80
+
+    kilo = 1e3
+    mega = 1e6
+    giga = 1e9
+    tera = 1e12
+    peta = 1e15
+    exa = 1e18
+    zetta = 1e21
+    yotta = 1e24
+
+
 class Size:
-    """ Representation of a binary size in octets (an octet is a byte 
+    """
+    Representation of a binary size in octets (an octet is a byte 
     with 8 bits).
 
     Provides decimal and binary prefixes for multiples, from kilo-octets to
     yotta-octets and from kibi-octets to yobi-octets.
 
-    Supports comparisons, string representations and arithmetic operations."""
+    Supports comparisons, string representations and arithmetic operations.
+
+    For more information: https://en.wikipedia.org/wiki/Octet_(computing)
+    """
 
     def __init__(self, octets: int):
 
@@ -27,82 +55,82 @@ class Size:
     @property
     def Kio(self, decimals=None) -> float:
         """ Size in kibioctets """
-        return float(self.octets / 2**10)
+        return float(self.octets / Multiple.kibi)
 
     @property
     def Mio(self) -> float:
         """ Size in mebioctets """
-        return float(self.octets / 2**20)
+        return float(self.octets / Multiple.mebi)
 
     @property
     def Gio(self) -> float:
         """ Size in gibioctets """
-        return float(self.octets / 2**30)
+        return float(self.octets / Multiple.giga)
 
     @property
     def Tio(self) -> float:
         """ Size in tebioctets """
-        return float(self.octets / 2**40)
+        return float(self.octets / Multiple.tebi)
 
     @property
     def Pio(self) -> float:
         """ Size in pebioctets """
-        return float(self.octets / 2**50)
+        return float(self.octets / Multiple.pebi)
 
     @property
     def Eio(self) -> float:
         """ Size in exbioctets """
-        return float(self.octets / 2**60)
+        return float(self.octets / Multiple.exbi)
 
     @property
     def Zio(self) -> float:
         """ Size in zebioctets """
-        return float(self.octets / 2**70)
+        return float(self.octets / Multiple.zebi)
 
     @property
     def Yio(self) -> float:
         """ Size in yobioctets """
-        return float(self.octets / 2**80)
+        return float(self.octets / Multiple.yobi)
 
     @property
     def ko(self) -> float:
         """ Size in kilooctets """
-        return float(self.octets / 1e3)
+        return float(self.octets / Multiple.kilo)
 
     @property
     def Mo(self) -> float:
         """ Size in megaoctets """
-        return float(self.octets / 1e6)
+        return float(self.octets / Multiple.mega)
 
     @property
     def Go(self) -> float:
         """ Size in gigaoctets """
-        return float(self.octets / 1e9)
+        return float(self.octets / Multiple.giga)
 
     @property
     def To(self) -> float:
         """ Size in teraoctets """
-        return float(self.octets / 1e12)
+        return float(self.octets / Multiple.tera)
 
     @property
     def Po(self) -> float:
         """ Size in petaoctets """
-        return float(self.octets / 1e15)
+        return float(self.octets / Multiple.peta)
 
     @property
     def Eo(self) -> float:
         """ Size in exaoctets """
-        return float(self.octets / 1e18)
+        return float(self.octets / Multiple.exa)
 
     @property
     def Zo(self) -> float:
         """ Size in zettaoctets """
-        return float(self.octets / 1e21)
+        return float(self.octets / Multiple.zetta)
 
     @property
     def Yo(self) -> float:
         """ Size in yottaoctets """
-        return float(self.octets / 1e24)
+        return float(self.octets / Multiple.yotta)
 
     """ Comparison magic methods """
 
@@ -165,3 +193,7 @@ class Size:
 
     def __pow__(self, power):
         return Size(self.octets ** power)
+
+    # rshift
+
+    # lshift
