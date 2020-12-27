@@ -1,3 +1,6 @@
+from typing import Union
+
+
 class Multiple:
     """
     Binary multiples
@@ -46,6 +49,38 @@ class Size:
             raise ValueError("'octets' argument must be positive")
 
         self.octets = octets
+
+    @classmethod
+    def from_Kio(cls, kibioctets: Union[int, float]):
+        return cls(int(kibioctets * Multiple.KIBI))
+
+    @classmethod
+    def from_Mio(cls, mebioctets: Union[int, float]):
+        return cls(int(mebioctets * Multiple.MEBI))
+
+    @classmethod
+    def from_Gio(cls, gibioctets: Union[int, float]):
+        return cls(int(gibioctets * Multiple.GIBI))
+
+    @classmethod
+    def from_Tio(cls, tebioctets: Union[int, float]):
+        return cls(int(tebioctets * Multiple.TEBI))
+
+    @classmethod
+    def from_Pio(cls, pebioctets: Union[int, float]):
+        return cls(int(pebioctets * Multiple.PEBI))
+
+    @classmethod
+    def from_Eio(cls, exbioctets: Union[int, float]):
+        return cls(int(exbioctets * Multiple.EXBI))
+
+    @classmethod
+    def from_Zio(cls, zebioctets: Union[int, float]):
+        return cls(int(zebioctets * Multiple.ZEBI))
+
+    @classmethod
+    def from_Yio(cls, yobioctets: Union[int, float]):
+        return cls(int(yobioctets * Multiple.YOBI))
 
     """ Properties """
 
