@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from typing import Union
 
 
@@ -205,31 +207,47 @@ class Size:
 
     """ Normal arithmetic operators """
 
-    def __add__(self, other):
+    def __add__(self, other: Size) -> Size:
+        """ Adding two sizes """
         return Size(self.octets + other.octets)
 
-    def __sub__(self, other):
+    def __sub__(self, other: Size) -> Size:
+        """ Substracting two sizes """
         difference = self.octets - other.octets
         if difference < 0:
             raise ValueError(
-                "Difference between Size objects cannot be negative")
+                "Difference between Size objects must be positive")
         else:
             return Size(difference)
 
-    def __div__(self, other):
-        return self.octets / other.octets
+    def __mul__(self, other: Union[int, float]) -> Size:
+        """ Multiply a size by a number """
+        return Size(int(self.octets * other))
 
-    def __floordiv__(self, other):
+    def __truediv__(self, other: Union[int, float, Size]) -> Union[float, Size]:
+        """ Divide a size by a number or another size """
+        if isinstance(other, (int, float)):
+            # If divide by number, return a size
+            return Size(int(self.octets / other))
+        elif isinstance(other, Size):
+            # If divide by another size, return a number
+            return self.octets / other.octets
+
+    def __floordiv__(self, other: Size):
+        """ Floor division of size by another size """
         return self.octets // other.octets
 
-    def __mod__(self, other):
+    def __mod__(self, other: Size):
+        """ Modulo of a size by another size """
         return Size(self.octets % other.octets)
 
-    def __divmod__(self, other):
+    def __divmod__(self, other: Size):
+        """ Floor division and modulo of size divided by another size """
         return (self.octets // other.octets, Size(self.octets % other.octets))
 
-    def __pow__(self, power):
-        return Size(self.octets ** power)
+    def __pow__(self, power: Union[int, float]):
+        """ TODO Complete here """
+        return Size(int(self.octets ** power))
 
     # rshift
 
