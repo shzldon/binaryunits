@@ -84,6 +84,38 @@ class Size:
     def from_Yio(cls, yobioctets: Union[int, float]):
         return cls(int(yobioctets * Multiple.YOBI))
 
+    @classmethod
+    def from_ko(cls, kilooctets: Union[int, float]):
+        return cls(int(kilooctets * Multiple.KILO))
+
+    @classmethod
+    def from_Mo(cls, megaoctets: Union[int, float]):
+        return cls(int(megaoctets * Multiple.MEGA))
+
+    @classmethod
+    def from_Go(cls, gigaoctets: Union[int, float]):
+        return cls(int(gigaoctets * Multiple.GIGA))
+
+    @classmethod
+    def from_To(cls, teraoctets: Union[int, float]):
+        return cls(int(teraoctets * Multiple.TERA))
+
+    @classmethod
+    def from_Po(cls, petaoctets: Union[int, float]):
+        return cls(int(petaoctets * Multiple.PETA))
+
+    @classmethod
+    def from_Eo(cls, exaoctets: Union[int, float]):
+        return cls(int(exaoctets * Multiple.EXA))
+
+    @classmethod
+    def from_Zo(cls, zettaoctets: Union[int, float]):
+        return cls(int(zettaoctets * Multiple.ZETTA))
+
+    @classmethod
+    def from_Yo(cls, yottaoctets: Union[int, float]):
+        return cls(int(yottaoctets * Multiple.YOTTA))
+
     """ Properties """
 
     @property
@@ -104,7 +136,7 @@ class Size:
     @property
     def Gio(self) -> float:
         """ Size in gibioctets """
-        return float(self.octets / Multiple.GIGA)
+        return float(self.octets / Multiple.GIBI)
 
     @property
     def Tio(self) -> float:
